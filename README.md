@@ -23,3 +23,19 @@ Solusi yang diusulkan adalah mengimplementasikan sistem rekomendasi berbasis mac
 Dengan menggunakan data pengguna (misalnya, preferensi produk, rating, pencarian sebelumnya) dan data produk (misalnya, kategori, ukuran, warna, merek), 
 sistem rekomendasi akan memberikan saran produk yang relevan. Hal ini akan membantu konsumen menghemat waktu, meningkatkan pengalaman berbelanja, dan pada akhirnya meningkatkan penjualan platform.
 
+### Problem Statement
+Berdasarkan kondisi yang telah diuraikan sebelumnya, proyek ini akan mengembangkan sistem rekomendasi produk fashion berbasis data. Sistem ini dirancang untuk membantu pengguna menemukan produk yang sesuai dengan preferensi mereka dengan memanfaatkan atribut produk dan interaksi pengguna.
+
+Dengan menggunakan teknologi machine learning algoritma Content Based Filtering dan Collaborative Filtering diharapkan dapat menjawab permasalahan berikut:
+- Bagaimana cara memanfaatkan data kategorikal seperti nama produk, brand, kategori, warna, dan ukuran untuk mengidentifikasi kemiripan produk sehingga dapat menghasilkan rekomendasi yang relevan dan membantu pengguna menemukan produk sesuai preferensi mereka?
+- Bagaimana sistem dapat memanfaatkan data rating pengguna untuk menghasilkan rekomendasi produk yang belum pernah diberi rating, sehingga membantu pengguna menemukan produk baru yang sesuai dengan preferensinya?
+
+### Goals
+Untuk menjawab roblem statement tersebut, akan dibuat sistem rekomendasi dengan tujuan atau goals sebagai berikut:
+- Mengembangkan sistem rekomendasi berbasis konten untuk menganalisis kemiripan produk berdasarkan atribut seperti nama produk, brand, kategori, warna, dan ukuran.
+- Mengembangkan sistem rekomendasi berbasis kolaboratif untuk merekomendasikan produk yang belum pernah diberi rating oleh pengguna dengan memanfaatkan data rating pengguna sebelumnya.
+
+### Solution Statement
+Untuk mencapai goals tersebut, ada 2 pendekatan yang akan digunakan yaitu:
+- **Content Based Filtering**: Untuk merekomendasikan produk berdasarkan atribut, metode content-based filtering akan menggunakan cosine similarity untuk menganalisis kemiripan antar produk berdasarkan fitur kategorikal seperti nama produk, brand, kategori, warna, dan ukuran. Cosine similarity dipilih karena mampu menghitung kemiripan antar produk secara efisien dengan mempertimbangkan vektor representasi atribut produk. Model ini akan dibuat dengan terlebih dahulu mengonversi data kategorikal menjadi representasi numerik melalui teknik seperti one-hot encoding atau TF-IDF. Kemudian, hasil kemiripan ini akan digunakan untuk memberikan rekomendasi produk yang serupa dengan preferensi pengguna.
+- **Collaborative Filtering dengan Neural Collaborative Filtering (NCF)**: Pendekatan ini akan menggunakan data rating pengguna untuk merekomendasikan produk yang mungkin diminati pengguna. NCF memanfaatkan teknik deep learning untuk menggabungkan representasi laten pengguna dan produk guna menangkap hubungan di antara keduanya.
