@@ -126,6 +126,9 @@ Dari visualisasi di atas didapatkan beberapa informasi antara lain:
 Terlihat bahwa horelasi di antara harga dan rating sebesar 0.0339 menunjukkan hubungan yang sangat lemah dan hampir tidak ada antara harga dan rating produk. Artinya, perubahasan harga tidak banyak berpengaruh pada penilaian pengguna.
 
 ## Data Preparation
+Akan dilakukan tahapan persiapan data sesuai kebutuhan untuk masing-masing model.
+### Content Based Filtering
+#### 1. Menggabungkan Data kategorikal
 Pada bagian ini akan dilakukan tahapan persiapan data yaitu menggabungkan kolom kategorikal.
 Proses ini menggabungkan informasi dari beberapa kolom seperti Product Name, Brand, Category, Color, dan Size ke dalam kolom baru bernama description untuk menyediakan representasi teks terpadu dari setiap produk. Data kosong diisi dengan string kosong ('') untuk menghindari error, dan produk dengan deskripsi kosong sepenuhnya dihapus. Tujuannya adalah memastikan setiap produk memiliki deskripsi lengkap untuk analisis lebih lanjut.
 ```python
@@ -144,6 +147,19 @@ Dari proses ini didapatkan kolom description sebagai berikut:
 <!-- ![image](https://github.com/user-attachments/assets/5b424e6f-0f83-4c62-9791-8e7f0f1d969b) -->
 
 <img src="https://github.com/user-attachments/assets/5b424e6f-0f83-4c62-9791-8e7f0f1d969b" alt="image" width="800"/>
+
+#### 2. Representasi Teks Description dengan TF-IDF
+Dalam model Content-Based Filtering, kolom description yang berisi informasi fitur produk direpresentasikan menggunakan TF-IDF (Term Frequency-Inverse Document Frequency). Metode ini mengubah data teks menjadi vektor numerik yang merepresentasikan tingkat kepentingan kata-kata dalam setiap deskripsi produk. TF-IDF sangat relevan karena memungkinkan sistem mengenali fitur unik dari setiap produk, sehingga kemiripan antara produk dapat dihitung secara efektif menggunakan Cosine Similarity. Representasi ini membantu model untuk menemukan hubungan antarproduk berdasarkan fitur deskriptif mereka, seperti kategori, brand, atau spesifikasi produk.
+
+### Collaborative Filtering
+#### 1. Encoding Ueer ID dan Product ID
+Pada Collaborative Filtering dengan NCF, User ID dan Product ID perlu diubah menjadi bentuk numerik melalui proses encoding. Encoding dilakukan agar kedua kolom ini dapat digunakan dalam embedding layer model, di mana vektor embedding mewakili karakteristik pengguna dan produk dalam ruang berdimensi rendah. Proses ini penting untuk mempermudah model mempelajari pola interaksi antara pengguna dan produk, yang akan digunakan untuk memprediksi rating produk yang belum diberi penilaian.
+
+#### 2. Membuat Interaction Matrix
+Interaction matrix dibuat untuk merepresentasikan hubungan antara pengguna dan produk berdasarkan rating yang telah diberikan. Matriks ini berisi informasi interaksi dengan pengguna sebagai baris dan produk sebagai kolom, di mana setiap sel mengandung nilai rating. Matriks ini adalah inti dari pendekatan Collaborative Filtering, karena menjadi data dasar yang digunakan model untuk mempelajari pola preferensi pengguna, termasuk produk-produk yang cenderung disukai berdasarkan rating sebelumnya.
+
+#### 3.  Split Dataset
+Dataset dibagi menjadi data pelatihan, dan pengujian untuk memastikan evaluasi yang adil terhadap model. Proses ini mencakup membagi data interaksi pengguna-produk menjadi bagian-bagian untuk melatih model (train set) dan mengevaluasi kinerja prediksinya (test set). Tahapan ini mencegah data leakage dan memastikan bahwa performa model diukur berdasarkan kemampuannya memprediksi interaksi pada data yang tidak terlihat selama pelatihan, sehingga hasil evaluasi mencerminkan kemampuan generalisasi model.
 
 ## Modeling
 Pada proyek ini, model yang digunakan adalah Cosine Similarity untuk pendekatan content-based filtering dan Neural Collaborative Filtering (NCF) untuk pendekatan collaborative filtering. Cosine Similarity akan digunakan untuk mengukur kemiripan antar produk berdasarkan fitur kategorikal seperti nama, merek, kategori, warna, dan ukuran, sedangkan NCF akan memanfaatkan data rating pengguna untuk merekomendasikan produk yang belum pernah diberi rating oleh pengguna. Model yang sudah dilatih akan dievaluasi dengan metrik MSE dan RMSE, penjelasan lebih detail terkait metrik evaluasi akan dibahas saat evaluasi model.
