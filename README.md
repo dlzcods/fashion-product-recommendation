@@ -39,3 +39,153 @@ Untuk menjawab roblem statement tersebut, akan dibuat sistem rekomendasi dengan 
 Untuk mencapai goals tersebut, ada 2 pendekatan yang akan digunakan yaitu:
 - **Content Based Filtering**: Untuk merekomendasikan produk berdasarkan atribut, metode content-based filtering akan menggunakan cosine similarity untuk menganalisis kemiripan antar produk berdasarkan fitur kategorikal seperti nama produk, brand, kategori, warna, dan ukuran. Cosine similarity dipilih karena mampu menghitung kemiripan antar produk secara efisien dengan mempertimbangkan vektor representasi atribut produk. Model ini akan dibuat dengan terlebih dahulu mengonversi data kategorikal menjadi representasi numerik melalui teknik seperti one-hot encoding atau TF-IDF. Kemudian, hasil kemiripan ini akan digunakan untuk memberikan rekomendasi produk yang serupa dengan preferensi pengguna.
 - **Collaborative Filtering dengan Neural Collaborative Filtering (NCF)**: Pendekatan ini akan menggunakan data rating pengguna untuk merekomendasikan produk yang mungkin diminati pengguna. NCF memanfaatkan teknik deep learning untuk menggabungkan representasi laten pengguna dan produk guna menangkap hubungan di antara keduanya.
+
+## Data Understanding
+Data yang akan digunakan pada proyek ini adalah dataset [Fashion Products](https://www.kaggle.com/datasets/bhanupratapbiswas/fashion-products/data) yang diunduh dari kaggle.
+
+Dataset tersebut berisi 1000 records dan 9 kolom yang memiliki karakteristik sebagai berikut:
+- User ID: ID unik yang mewakili setiap pengguna dalam dataset. Tidak mengandung informasi langsung terkait atribut pengguna.
+- Product ID: ID unik yang mengidentifikasi produk tertentu. Berguna untuk membedakan setiap produk di katalog.
+- Product Name: Nama produk yang memberikan informasi deskriptif mengenai produk tertentu.
+- Brand: Nama merek atau label produk.
+- Category: Kategori atau jenis produk dalam katalog.
+- Price: Harga produk dalam satuan mata uang dollar.
+- Rating: Penilaian pengguna terhadap produk.
+- Color: Warna dari produk.
+- Size: Ukuran dari produk.
+
+Untuk memahai data, selanjutnya akan dilakukan proses berikut:
+### 1. Data Loading
+Supaya isi dataset lebih mudah dipahami, kita perlu melakukan proses loading data terlebih dahulu dengan import library pandas untuk dapat membaca file datanya.
+
+### 2. Exploratory Data Analysis
+#### Informasi Dataset
+Mengecek informasi pada dataset dengan fungsi info() berikut.
+<!-- ![image](https://github.com/user-attachments/assets/7add242c-e067-4bc0-b0ab-6601ec408017) -->
+
+<img src="https://github.com/user-attachments/assets/7add242c-e067-4bc0-b0ab-6601ec408017" alt="image" width="300"/>
+
+<br>
+
+Berdasarkan informasi di atas, dataset ini memiliki beberapa kriteria antara lain:
+- 1 Kolom dengan tipe float64 yaitu Rating
+- 3 Kolom dengan tipe int64 yaitu User ID, Product ID, dan Price
+- 5 Kolom dengan tipe object yaitu Product Name, Brand, Category, Color, dan Size
+
+#### Cek Missing Value
+Jika data terdiri dari ratusan bahkan ribuan baris tentu akan susah dalam menemukan nilai field yang kosong. Oleh karena itu, Pandas memungkinkan kita dapat menemukan missing value secara cepat dengan fungsi isnull() dan sum().
+
+<!-- ![image](https://github.com/user-attachments/assets/e2b21244-631d-477d-bab6-fcc763a4e689) -->
+
+<img src="https://github.com/user-attachments/assets/e2b21244-631d-477d-bab6-fcc763a4e689" alt="image" width="150"/>
+
+<br>
+
+Berdaarkan informasi di atas tidak ditemukan adanya missing value, sehingga bisa dilanjutkan ke proses berikutnya.
+
+#### Distribusi Produk berdasarkan Kategori
+<!-- ![image](https://github.com/user-attachments/assets/6674fc20-a30d-4256-b44c-bdcf2b6d301c) -->
+
+<img src="https://github.com/user-attachments/assets/6674fc20-a30d-4256-b44c-bdcf2b6d301c" alt="image" width="600"/>
+
+<br>
+
+Dari visualisasi di atas nampak beberapa informasi di antaranya:
+- Secara keseluruhan ketiga kategori produk memiliki jumlah yang mirip.
+- Kategori Kid's Fashion memiliki jumlah yang paling unggul disusul oleh Women's Fashion kemudian Men's Fashion.
+
+#### Distribusi Produk berdasarkan Brand
+<!-- ![image](https://github.com/user-attachments/assets/1ffa7e19-2530-4693-9a84-0830260b0ede) -->
+
+<img src="https://github.com/user-attachments/assets/1ffa7e19-2530-4693-9a84-0830260b0ede" alt="image" width="600"/>
+
+<br>
+
+Dari visualasi di atas, didapatkan informasi sebagai berikut:
+- Secara keseluruhan kelima brand memiliki jumlah produk yang tidak terlalu berbeda jauh.
+- Brand Nike memiliki jumlah produk yang paling unggul dibandingkan brand yang lain.
+
+#### Distribusi Brand berdasarkan Rating Tinggi (4 ke Atas) dan Rating Rendah (2 ke Bawah)
+<!-- ![image](https://github.com/user-attachments/assets/b2141f15-cbb9-407c-843a-548327c4efa5) -->
+
+<img src="https://github.com/user-attachments/assets/b2141f15-cbb9-407c-843a-548327c4efa5" alt="image" width="800"/>
+
+<br>
+
+Dari visualisasi di atas didapatkan beberapa informasi antara lain:
+- Gucci unggul dalam produk dengan rating yang tinggi dan memiliki jumlah produk dengan rating rendah paling sedikit.
+- Sebaliknya, Adidas justru memiliki rating yang rendah terbanyak dan memiliki paling sedikit produk dengan rating tinggi.
+- Zara memiliki distribusi yang cukup seimbang antara jumlah produk dengan rating tinggi dan rating yang rendah.
+
+#### Korelasi antara Harga dan Rating
+<!-- ![image](https://github.com/user-attachments/assets/ff98b065-7f60-470d-8f80-de9278543f84) -->
+
+<img src="https://github.com/user-attachments/assets/ff98b065-7f60-470d-8f80-de9278543f84" alt="image" width="600"/>
+
+<br>
+
+Terlihat bahwa horelasi di antara harga dan rating sebesar 0.0339 menunjukkan hubungan yang sangat lemah dan hampir tidak ada antara harga dan rating produk. Artinya, perubahasan harga tidak banyak berpengaruh pada penilaian pengguna.
+
+## Data Preparation
+Pada bagian ini akan dilakukan tahapan persiapan data yaitu menggabungkan kolom kategorikal.
+Proses ini menggabungkan informasi dari beberapa kolom seperti Product Name, Brand, Category, Color, dan Size ke dalam kolom baru bernama description untuk menyediakan representasi teks terpadu dari setiap produk. Data kosong diisi dengan string kosong ('') untuk menghindari error, dan produk dengan deskripsi kosong sepenuhnya dihapus. Tujuannya adalah memastikan setiap produk memiliki deskripsi lengkap untuk analisis lebih lanjut.
+```python
+product_data['description'] = (
+    product_data['Product Name'].fillna('') + " " +
+    product_data['Brand'].fillna('') + " " +
+    product_data['Category'].fillna('') + " " +
+    product_data['Color'].fillna('') + " " +
+    product_data['Size'].fillna('')
+)
+
+product_data = product_data[product_data['description'].str.strip() != '']
+```
+
+Dari proses ini didapatkan kolom description sebagai berikut:
+<!-- ![image](https://github.com/user-attachments/assets/5b424e6f-0f83-4c62-9791-8e7f0f1d969b) -->
+
+<img src="https://github.com/user-attachments/assets/5b424e6f-0f83-4c62-9791-8e7f0f1d969b" alt="image" width="800"/>
+
+## Modeling
+Pada proyek ini, model yang digunakan adalah Cosine Similarity untuk pendekatan content-based filtering dan Neural Collaborative Filtering (NCF) untuk pendekatan collaborative filtering. Cosine Similarity akan digunakan untuk mengukur kemiripan antar produk berdasarkan fitur kategorikal seperti nama, merek, kategori, warna, dan ukuran, sedangkan NCF akan memanfaatkan data rating pengguna untuk merekomendasikan produk yang belum pernah diberi rating oleh pengguna.
+
+### Cosine Similarity
+Cosine similarity adalah metode yang digunakan untuk mengukur tingkat kesamaan antara dua vektor dalam ruang multidimensi. Metode ini menghitung nilai kosinus dari sudut antara dua vektor, yang masing-masing direpresentasikan sebagai titik dalam ruang tersebut. Nilai cosine similarity berkisar dari -1 hingga 1, di mana nilai 1 menunjukkan kedua vektor sangat mirip (sepenuhnya sejajar), nilai 0 berarti tidak ada hubungan (tegak lurus), dan nilai -1 menunjukkan kedua vektor saling berlawanan (sepenuhnya tidak mirip). Metode ini sering diaplikasikan dalam analisis teks dan pengelompokan data untuk mengukur kesamaan antar dokumen atau fitur dalam suatu dataset.
+
+```math
+    \text{Cosine Similarity} = \frac{\vec{A} \cdot \vec{B}}{\|\vec{A}\| \times \|\vec{B}\|}
+```
+
+Di mana:  
+```math
+\begin{aligned}
+    \vec{A} & = \text{Vektor pertama, merepresentasikan satu entitas data (misalnya, produk atau pengguna).} \\
+    \vec{B} & = \text{Vektor kedua, merepresentasikan entitas data lainnya.} \\
+    \vec{A} \cdot \vec{B} & = \text{Hasil dot product antara } \vec{A} \text{ dan } \vec{B}, \; \textit{diperoleh dengan menjumlahkan perkalian elemen-elemen yang sesuai.} \\
+    \|\vec{A}\| & = \text{Magnitudo (panjang) vektor } \vec{A}, \; \textit{dihitung sebagai akar kuadrat dari jumlah kuadrat elemen-elemen } \vec{A}. \\
+    \|\vec{B}\| & = \text{Magnitudo (panjang) vektor } \vec{B}, \; \textit{dihitung serupa seperti } \|\vec{A}\|. \\
+    \text{Cosine Similarity} & = \textit{Nilai yang menunjukkan tingkat kesamaan antara } \vec{A} \text{ dan } \vec{B}, \; \textit{berkisar antara -1 (berlawanan arah) hingga 1 (sejajar).}
+\end{aligned}
+```
+
+Kemudian dilakukan pengujian model sebagai berikut:
+#### Input Produk
+
+| Product ID | Product Name | Brand | Category      | Color | Size |
+|------------|--------------|-------|---------------|-------|------|
+| 77         | Sweater      | H&M   | Kid's Fashion | Blue  | L    |
+
+#### Hasil Rekomendasi
+| Product ID | Product Name | Brand | Category      | Color | Size |
+|------------|--------------|-------|---------------|-------|------|
+| 687        | Sweater      | H&M   | Kid's Fashion | Blue  | L    |
+| 765        | Sweater      | H&M   | Kid's Fashion | Blue  | S    |
+| 361        | Sweater      | H&M   | Kids' Fashion | Blue  | XL   |
+| 37         | Sweater      | H&M   | Kids' Fashion | Blue  | S    |
+| 492        | Sweater      | H&M   | Kids' Fashion | Blue  | M    |
+
+
+Berdasarkan hasil pengujian model Content-Based Filtering dengan menggunakan filter description, sistem berhasil merekomendasikan lima produk fashion yang serupa dengan produk ID 77. Produk-produk ini termasuk beberapa produk dari kategori yang sama, yaitu Kid's Fashion, serta brand yang sama, H&M. Hal ini menunjukkan bahwa jika seorang pengguna tertarik dengan produk seperti Sweater dari H&M dalam kategori Kid's Fashion dengan warna biru dan ukuran L, sistem dapat memberikan rekomendasi produk serupa, baik dalam hal kategori, brand, maupun deskripsi produk.
+
+Dengan pendekatan ini, sistem menggunakan kemiripan dalam deskripsi produk untuk mengidentifikasi produk-produk lain yang mungkin menarik bagi pengguna berdasarkan preferensi mereka terhadap produk ID 77. Dalam hal ini, deskripsi produk menjadi fitur utama untuk menilai kesamaan produk, yang memungkinkan sistem memberikan rekomendasi yang relevan dan sesuai dengan apa yang disukai oleh pengguna.
+
