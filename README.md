@@ -189,3 +189,101 @@ Berdasarkan hasil pengujian model Content-Based Filtering dengan menggunakan fil
 
 Dengan pendekatan ini, sistem menggunakan kemiripan dalam deskripsi produk untuk mengidentifikasi produk-produk lain yang mungkin menarik bagi pengguna berdasarkan preferensi mereka terhadap produk ID 77. Dalam hal ini, deskripsi produk menjadi fitur utama untuk menilai kesamaan produk, yang memungkinkan sistem memberikan rekomendasi yang relevan dan sesuai dengan apa yang disukai oleh pengguna.
 
+Kelebihan Cosine Similarity:
+- Independensi terhadap panjang vektor: Cosine similarity mengukur kesamaan berdasarkan arah vektor, bukan magnitudo. Ini berarti bahwa dua vektor yang memiliki panjang berbeda tetapi arah yang sama (misalnya, dua produk dengan deskripsi serupa) dapat dianggap sangat mirip.
+- Efektif dalam teks dan data spars: Dalam aplikasi seperti pemrosesan teks atau sistem rekomendasi berbasis konten, cosine similarity sangat efektif karena sering kali data yang digunakan (misalnya, kata-kata dalam dokumen) sangat jarang (sparse), dan metode ini dapat menangani data tersebut dengan baik.
+- Skalabilitas: Cosine similarity dapat diterapkan pada dataset besar tanpa memerlukan komputasi yang sangat berat, karena perhitungannya hanya bergantung pada produk titik dan panjang vektor yang dapat dihitung dengan efisien.
+
+Kekurangan Cosine Similarity:
+- Tidak memperhitungkan urutan atau konteks: Cosine similarity hanya mengukur kesamaan antara dua vektor, tanpa mempertimbangkan urutan atau konteks data (misalnya, urutan kata dalam kalimat atau urutan preferensi pengguna dalam sistem rekomendasi).
+- Sensitif terhadap data noise: Cosine similarity dapat menghasilkan hasil yang tidak akurat jika data memiliki banyak noise atau jika ada kata-kata atau fitur yang tidak relevan dalam representasi vektor, karena setiap elemen vektor berkontribusi pada hasil akhirnya.
+- Tidak menangkap hubungan non-linear: Cosine similarity mengasumsikan hubungan linier antar elemen vektor, sehingga tidak dapat menangkap hubungan kompleks atau non-linear dalam data, yang mungkin lebih relevan dalam beberapa aplikasi (misalnya, dalam analisis citra atau data yang lebih kompleks).
+
+### Neural Collaborative Filtering (NCF)
+Neural Collaborative Filtering (NCF) adalah metode yang menggabungkan teknik Collaborative Filtering tradisional dengan kemampuan neural networks untuk memodelkan interaksi pengguna dan produk dengan cara yang lebih kompleks dan non-linear. NCF bertujuan untuk memberikan rekomendasi berdasarkan interaksi antara pengguna dan produk, tanpa memerlukan eksplisit informasi tentang preferensi pengguna atau produk lainnya selain ID pengguna dan produk itu sendiri pada proyek ini.
+
+#### Arsitektur NCF
+##### 1. Embedding Layer
+- User Embedding: Setiap pengguna diwakili dalam bentuk vektor berdimensi rendah (embedding). Proses embedding ini mereduksi ID pengguna yang dapat sangat besar (misalnya, jutaan ID pengguna) ke dalam ruang berdimensi lebih kecil yang menyimpan informasi relevan tentang preferensi pengguna.
+- Product Embedding: Setiap produk juga diwakili dengan cara yang sama, yaitu vektor embedding, yang mengonversi ID produk menjadi representasi numerik berdimensi rendah.
+
+```math
+\vec{e_u} \in \mathbb{R}^d, \quad \vec{e_p} \in \mathbb{R}^d
+```
+
+Di mana:
+
+```math
+\begin{aligned}
+    \vec{e_u} & = \text{Vektor embedding untuk pengguna (user),} \; \textit{diambil dari matriks embedding pengguna } W_u. \\
+    \vec{e_p} & = \text{Vektor embedding untuk produk (item),} \; \textit{diambil dari matriks embedding produk } W_p. \\
+    d & = \text{Dimensi dari embedding, yaitu jumlah fitur yang digunakan untuk merepresentasikan setiap entitas.}
+\end{aligned}
+```
+
+##### 2. Concatenation
+Setelah proses embedding, vektor-vektor dari pengguna dan produk digabungkan (concatenate) menjadi satu vektor panjang yang menggabungkan informasi kedua entitas tersebut. Dengan kata lain, pengguna dan produk saling berinteraksi dalam satu ruang yang lebih luas.
+
+
+```math
+\vec{e_u} \oplus \vec{e_p} \in \mathbb{R}^{2d}
+```
+
+Di mana:
+
+```math
+\begin{aligned}
+    \vec{e_u} & = \text{Vektor embedding untuk pengguna (user),} \; \textit{diambil dari matriks embedding pengguna } W_u. \\
+    \vec{e_p} & = \text{Vektor embedding untuk produk (item),} \; \textit{diambil dari matriks embedding produk } W_p. \\
+    \oplus & = \text{Operasi concatenation, yaitu menggabungkan kedua vektor menjadi satu vektor.} \\
+    2d & = \text{Dimensi vektor hasil concatenation, yaitu dua kali dimensi embedding (\(d\)) karena kita menggabungkan dua vektor.}
+\end{aligned}
+```
+
+##### 3. Multilayer Perceptron (MLP)
+Vektor gabungan yang diperoleh dari concatenation kemudian diproses melalui beberapa lapisan jaringan syaraf (MLP) untuk menangkap interaksi yang lebih kompleks antara pengguna dan produk. Setiap lapisan dalam MLP memiliki unit tersembunyi yang mengaktifkan (activation) hubungan non-linear antara input dan output. Misalnya, lapisan pertama bisa berukuran 128 unit, dan lapisan kedua bisa berukuran 64 unit.
+
+```math
+\text{MLP}\left( \vec{e_u} \oplus \vec{e_p} \right)
+```
+
+Di mana:
+
+```math
+\begin{aligned}
+    \vec{e_u} \oplus \vec{e_p} & = \text{Vektor hasil concatenation antara embedding pengguna dan produk,} \; \textit{seperti yang telah dijelaskan sebelumnya.} \\
+    \text{MLP} & = \text{Fungsi Multi-Layer Perceptron, yang terdiri dari beberapa lapisan fully connected (dense) yang digunakan untuk memodelkan interaksi non-linear antara input.} \\
+    \text{MLP}\left( \vec{e_u} \oplus \vec{e_p} \right) & = \text{Hasil output dari MLP yang memproses vektor concatenation, menghasilkan prediksi nilai akhir (misalnya rating atau relevansi).}
+\end{aligned}
+```
+
+##### 4. Output Layer
+Setelah melewati lapisan-lapisan MLP, output dari model adalah prediksi rating yang akan diberikan oleh pengguna terhadap produk. Fungsi aktivasi linear digunakan pada output layer untuk menghasilkan rating yang dapat berupa nilai kontinu.
+
+```math
+\hat{r}_{up} = f_{\text{MLP}}\left( \vec{e_u} \oplus \vec{e_p} \right)
+```
+
+Di mana:
+
+```math
+\begin{aligned}
+    \hat{r}_{up} & = \text{Prediksi output untuk interaksi pengguna dan produk, misalnya rating atau relevansi, yang dihasilkan dari fungsi MLP.} \\
+    f_{\text{MLP}} & = \text{Fungsi yang mengacu pada hasil dari proses Multi-Layer Perceptron, yang memetakan input (concatenation dari embedding pengguna dan produk) menjadi output akhir.} \\
+    \vec{e_u} \oplus \vec{e_p} & = \text{Vektor hasil concatenation antara embedding pengguna dan produk, yang telah diproses oleh MLP untuk menghasilkan output.}
+\end{aligned}
+```
+
+Kelebihan Neural Collaborative Filtering:
+- Kemampuan Menangkap Pola Kompleks: NCF dapat menangkap pola yang lebih kompleks dalam data dibandingkan dengan metode tradisional seperti matrix factorization, karena menggunakan neural networks yang dapat belajar dari interaksi non-linear antara fitur pengguna dan produk.
+- Fleksibilitas dalam Arsitektur: NCF memungkinkan eksperimen dengan berbagai jenis arsitektur neural networks (MLP, CNN, RNN) yang dapat disesuaikan untuk berbagai jenis data dan aplikasi, meningkatkan kemampuannya untuk menangani berbagai jenis data.
+- Kemampuan untuk Memperbaiki Kekurangan Model Sederhana: Berbeda dengan model berbasis matriks atau nearest neighbors, NCF dapat mengatasi keterbatasan teknik-teknik tersebut dalam menangkap hubungan non-linear antara pengguna dan item, menjadikannya lebih efektif dalam prediksi rekomendasi.
+
+Kekurangan Neural Collaborative Filtering:
+- Kompleksitas dalam Pelatihan: Karena melibatkan deep learning, NCF membutuhkan lebih banyak data dan waktu untuk pelatihan dibandingkan dengan model berbasis algoritma sederhana, seperti collaborative filtering berbasis cosine similarity atau k-NN.
+- Overfitting: NCF memiliki potensi lebih tinggi untuk overfitting, terutama jika data training tidak cukup besar atau jika model terlalu rumit, karena jaringan neural bisa belajar noise dalam data.
+- Memerlukan Sumber Daya Komputasi yang Lebih Besar: Model NCF biasanya lebih mahal dalam hal komputasi, membutuhkan hardware yang lebih kuat (seperti GPU) untuk melatih model dalam waktu yang efisien, yang mungkin menjadi kendala di lingkungan dengan sumber daya terbatas.
+
+Berikut merupakan hasil pengujian model Neural Collaborative Filtering
+#### Produk yang diberi Rating oleh User
+
