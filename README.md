@@ -316,17 +316,17 @@ Seperti yang telah dijelaskan sebelumnya, metrik evaluasi yang digunakan adalah 
     
     ```math
       \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-      ```
+    ```
       
-      Di mana:
-      ```math
+  Di mana:
+  ```math
       \begin{aligned}
       \text{MSE} & = \text{Mean Squared Error} \\
       n & = \text{Jumlah data observasi} \\
       y_i & = \text{Nilai aktual ke-} i \\
       \hat{y}_i & = \text{Nilai prediksi ke-} i
       \end{aligned}
-      ```
+  ```
 
 - Root Mean Squared Error (RMSE)
     RMSE (Root Mean Squared Error) adalah akar kuadrat dari MSE, yang memberikan ukuran rata-rata kesalahan prediksi dalam satuan yang sama dengan data asli.
