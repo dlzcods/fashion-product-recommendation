@@ -1,15 +1,15 @@
 # Laporan Proyek Machine Learning - Muhammad Abdiel Al Hafiz
 ## Domain Proyek
 ### Latar Belakang
-Seiring dengan kemajuan teknologi dan inovasi yang terus berkembang, e-commerce telah menjadi bagian penting dalam kehidupan sehari-hari. Belanja online memberikan kemudahan bagi konsumen untuk mengakses berbagai produk hanya dengan beberapa klik (Referensi 1). Di industri fashion, e-commerce berkembang pesat karena kemudahan dalam membeli produk dari rumah tanpa harus mengunjungi toko fisik. Namun, tantangan utama yang dihadapi oleh konsumen adalah kesulitan dalam menemukan produk yang sesuai dengan preferensi mereka, seperti ukuran, warna, dan gaya, di tengah banyaknya pilihan produk yang tersedia di platform online (Referensi 3). Oleh karena itu, solusi yang dapat membantu pengguna menemukan produk yang relevan sangat dibutuhkan.
+Seiring dengan kemajuan teknologi dan inovasi yang terus berkembang, e-commerce telah menjadi bagian penting dalam kehidupan sehari-hari. Belanja online memberikan kemudahan bagi konsumen untuk mengakses berbagai produk hanya dengan beberapa klik [[1](https://www.academia.edu/86124217/Amazon_Product_Recommendation_System)]. Di industri fashion, e-commerce berkembang pesat karena kemudahan dalam membeli produk dari rumah tanpa harus mengunjungi toko fisik. Namun, tantangan utama yang dihadapi oleh konsumen adalah kesulitan dalam menemukan produk yang sesuai dengan preferensi mereka, seperti ukuran, warna, dan gaya, di tengah banyaknya pilihan produk yang tersedia di platform online [[3](https://www.academia.edu/82914123/Enhancing_E_Commerce_Applications_with_Machine_Learning_Recommendation_Systems)].
 
-Dalam e-commerce, terutama di sektor fashion, navigasi yang sulit dan pencarian produk yang tidak efisien menjadi masalah utama. Konsumen sering kali harus menghabiskan waktu yang lama untuk menyaring ribuan produk untuk menemukan apa yang mereka inginkan, tanpa bantuan karyawan toko seperti di toko fisik (Referensi 2). Hal ini menambah waktu dan usaha yang dibutuhkan untuk membeli produk yang sesuai, dan sering kali menyebabkan frustrasi. Oleh karena itu, diperlukan sebuah sistem yang dapat menyaring produk-produk fashion yang relevan sesuai dengan preferensi individu pengguna.
+Dalam e-commerce, terutama di sektor fashion, navigasi yang sulit dan pencarian produk yang tidak efisien menjadi masalah utama. Konsumen sering kali harus menghabiskan waktu yang lama untuk menyaring ribuan produk untuk menemukan apa yang mereka inginkan, tanpa bantuan karyawan toko seperti di toko fisik [[2](https://www.academia.edu/96238561/ERS_Latent_Dirichlet_Allocation_Based_E_Commerce_Recommendation_System_Using_Deep_Neural_Network)]. Hal ini menambah waktu dan usaha yang dibutuhkan untuk membeli produk yang sesuai, dan sering kali menyebabkan frustrasi.
 
-Untuk mengatasi permasalahan tersebut, sistem rekomendasi berbasis teknologi machine learning dapat digunakan. Sistem ini membantu konsumen menemukan produk yang relevan dengan minat dan preferensi mereka secara cepat dan efisien (Referensi 1). Di sektor fashion, sistem rekomendasi dapat menyarankan produk berdasarkan karakteristik seperti kategori produk, ukuran, warna, atau bahkan preferensi yang pernah ditunjukkan oleh pengguna sebelumnya. Dengan mengimplementasikan sistem rekomendasi, platform e-commerce dapat meningkatkan peluang konsumen untuk menambahkan produk ke dalam keranjang belanja mereka dan akhirnya melakukan pembelian (Referensi 3).
+Untuk mengatasi permasalahan tersebut, sistem rekomendasi berbasis teknologi machine learning dapat digunakan. Sistem ini membantu konsumen menemukan produk yang relevan dengan minat dan preferensi mereka secara cepat dan efisien [[1](https://www.academia.edu/86124217/Amazon_Product_Recommendation_System)]. Di sektor fashion, sistem rekomendasi dapat menyarankan produk berdasarkan karakteristik seperti kategori produk, ukuran, warna, atau bahkan preferensi yang pernah ditunjukkan oleh pengguna sebelumnya. Dengan mengimplementasikan sistem rekomendasi, platform e-commerce dapat meningkatkan peluang konsumen untuk menambahkan produk ke dalam keranjang belanja mereka dan akhirnya melakukan pembelian [[3](https://www.academia.edu/82914123/Enhancing_E_Commerce_Applications_with_Machine_Learning_Recommendation_Systems)].
 
-Agar sistem rekomendasi dapat berfungsi dengan baik, data yang tepat perlu dikumpulkan dan diproses. Data tentang produk fashion seperti kategori, ukuran, warna, harga, dan merek, serta data pengguna seperti preferensi dan rating produk, sangat penting untuk menciptakan rekomendasi yang relevan dan personal (Referensi 3). Pengolahan data yang baik dan pemilihan data yang relevan sangat krusial agar sistem rekomendasi dapat memberikan hasil yang optimal bagi konsumen dan meningkatkan pengalaman berbelanja mereka.
+Agar sistem rekomendasi dapat berfungsi dengan baik, data yang tepat perlu dikumpulkan dan diproses. Data tentang produk fashion seperti kategori, ukuran, warna, harga, dan merek, serta data pengguna seperti preferensi dan rating produk, sangat penting untuk menciptakan rekomendasi yang relevan dan personal [[3](https://www.academia.edu/82914123/Enhancing_E_Commerce_Applications_with_Machine_Learning_Recommendation_Systems)]. Pengolahan data yang baik dan pemilihan data yang relevan sangat krusial agar sistem rekomendasi dapat memberikan hasil yang optimal bagi konsumen dan meningkatkan pengalaman berbelanja mereka.
 
-Dengan penerapan sistem rekomendasi berbasis machine learning, platform e-commerce dapat membantu pengguna menemukan produk fashion yang tepat sesuai dengan preferensi mereka, sehingga meningkatkan kepuasan pelanggan dan konversi penjualan. Rekomendasi yang tepat akan meningkatkan efisiensi pencarian produk dan membantu konsumen menghemat waktu serta usaha dalam memilih produk yang sesuai dengan kebutuhan mereka (Referensi 2). Selain itu, platform e-commerce dapat memperoleh wawasan yang lebih dalam tentang preferensi pengguna dan mengoptimalkan penawaran produk mereka sesuai dengan permintaan pasar yang terus berkembang (Referensi 1).
+Dengan penerapan sistem rekomendasi berbasis machine learning, platform e-commerce dapat membantu pengguna menemukan produk fashion yang tepat sesuai dengan preferensi mereka, sehingga meningkatkan kepuasan pelanggan dan konversi penjualan. Rekomendasi yang tepat akan meningkatkan efisiensi pencarian produk dan membantu konsumen menghemat waktu serta usaha dalam memilih produk yang sesuai dengan kebutuhan mereka [[2](https://www.academia.edu/96238561/ERS_Latent_Dirichlet_Allocation_Based_E_Commerce_Recommendation_System_Using_Deep_Neural_Network)]. Selain itu, platform e-commerce dapat memperoleh wawasan yang lebih dalam tentang preferensi pengguna dan mengoptimalkan penawaran produk mereka sesuai dengan permintaan pasar yang terus berkembang [[1](https://www.academia.edu/86124217/Amazon_Product_Recommendation_System)].
 
 ## Business Understanding
 Pembeli produk fashion di platform e-commerce adalah individu yang berusaha menemukan produk yang sesuai dengan preferensi mereka 
@@ -42,7 +42,6 @@ Untuk mencapai goals tersebut, ada 2 pendekatan yang akan digunakan yaitu:
 
 ## Data Understanding
 Data yang akan digunakan pada proyek ini adalah dataset [Fashion Products](https://www.kaggle.com/datasets/bhanupratapbiswas/fashion-products/data) yang diunduh dari kaggle.
-
 Dataset tersebut berisi 1000 records dan 9 kolom yang memiliki karakteristik sebagai berikut:
 - User ID: ID unik yang mewakili setiap pengguna dalam dataset. Tidak mengandung informasi langsung terkait atribut pengguna.
 - Product ID: ID unik yang mengidentifikasi produk tertentu. Berguna untuk membedakan setiap produk di katalog.
@@ -147,7 +146,7 @@ Dari proses ini didapatkan kolom description sebagai berikut:
 <img src="https://github.com/user-attachments/assets/5b424e6f-0f83-4c62-9791-8e7f0f1d969b" alt="image" width="800"/>
 
 ## Modeling
-Pada proyek ini, model yang digunakan adalah Cosine Similarity untuk pendekatan content-based filtering dan Neural Collaborative Filtering (NCF) untuk pendekatan collaborative filtering. Cosine Similarity akan digunakan untuk mengukur kemiripan antar produk berdasarkan fitur kategorikal seperti nama, merek, kategori, warna, dan ukuran, sedangkan NCF akan memanfaatkan data rating pengguna untuk merekomendasikan produk yang belum pernah diberi rating oleh pengguna.
+Pada proyek ini, model yang digunakan adalah Cosine Similarity untuk pendekatan content-based filtering dan Neural Collaborative Filtering (NCF) untuk pendekatan collaborative filtering. Cosine Similarity akan digunakan untuk mengukur kemiripan antar produk berdasarkan fitur kategorikal seperti nama, merek, kategori, warna, dan ukuran, sedangkan NCF akan memanfaatkan data rating pengguna untuk merekomendasikan produk yang belum pernah diberi rating oleh pengguna. Model yang sudah dilatih akan dievaluasi dengan metrik MSE dan RMSE, penjelasan lebih detail terkait metrik evaluasi akan dibahas saat evaluasi model.
 
 ### Cosine Similarity
 Cosine similarity adalah metode yang digunakan untuk mengukur tingkat kesamaan antara dua vektor dalam ruang multidimensi. Metode ini menghitung nilai kosinus dari sudut antara dua vektor, yang masing-masing direpresentasikan sebagai titik dalam ruang tersebut. Nilai cosine similarity berkisar dari -1 hingga 1, di mana nilai 1 menunjukkan kedua vektor sangat mirip (sepenuhnya sejajar), nilai 0 berarti tidak ada hubungan (tegak lurus), dan nilai -1 menunjukkan kedua vektor saling berlawanan (sepenuhnya tidak mirip). Metode ini sering diaplikasikan dalam analisis teks dan pengelompokan data untuk mengukur kesamaan antar dokumen atau fitur dalam suatu dataset.
@@ -173,13 +172,13 @@ Kemudian dilakukan pengujian model sebagai berikut:
 
 | Product ID | Product Name | Brand | Category      | Color | Size |
 |------------|--------------|-------|---------------|-------|------|
-| 77         | Sweater      | H&M   | Kid's Fashion | Blue  | L    |
+| 77         | Sweater      | H&M   | Kids' Fashion | Blue  | L    |
 
 #### Hasil Rekomendasi
 | Product ID | Product Name | Brand | Category      | Color | Size |
 |------------|--------------|-------|---------------|-------|------|
-| 687        | Sweater      | H&M   | Kid's Fashion | Blue  | L    |
-| 765        | Sweater      | H&M   | Kid's Fashion | Blue  | S    |
+| 687        | Sweater      | H&M   | Kids' Fashion | Blue  | L    |
+| 765        | Sweater      | H&M   | Kids' Fashion | Blue  | S    |
 | 361        | Sweater      | H&M   | Kids' Fashion | Blue  | XL   |
 | 37         | Sweater      | H&M   | Kids' Fashion | Blue  | S    |
 | 492        | Sweater      | H&M   | Kids' Fashion | Blue  | M    |
@@ -273,6 +272,28 @@ Di mana:
     \vec{e_u} \oplus \vec{e_p} & = \text{Vektor hasil concatenation antara embedding pengguna dan produk, yang telah diproses oleh MLP untuk menghasilkan output.}
 \end{aligned}
 ```
+Berikut merupakan hasil pengujian model Neural Collaborative Filtering untuk user ID 98:
+#### 5 Produk dengan Rating Tertinggi  oleh User
+| Product ID | Product Name | Brand  | Category        | Price | Rating |
+|------------|--------------|--------|-----------------|-------|--------|
+| 29         | Shoes        | Gucci  | Women's Fashion | 85    | 4.94   |
+| 898        | Dress        | Nike   | Women's Fashion | 44    | 4.21   |
+| 779        | Jeans        | Nike   | Kids' Fashion   | 94    | 3.72   |
+| 32         | T-shirt      | Nike   | Kids' Fashion   | 78    | 3.44   |
+| 173        | Dress        | Nike   | Kids' Fashion   | 21    | 3.10   |
+
+#### Top 5 Rekomendasi Produk
+| Product ID | Product Name | Brand  | Category        | Price | Rating |
+|------------|--------------|--------|-----------------|-------|--------|
+| 33         | Jeans        | H&M    | Kid' Fashion    | 89    | 4.80   |
+| 302        | T-shirt      | Gucci  | Kid' Fashion    | 37    | 4.90   |
+| 616        | Dress        | Zara   | Women's Fashion | 98    | 4.87   |
+| 701        | Shoes        | Gucci  | Kids' Fashion   | 58    | 3.80   |
+| 704        | T-shirt      | Adidas | Kids' Fashion   | 38    | 3.98   |
+
+Hasil rekomendasi model Neural Collaborative Filtering (NCF) untuk User ID 98 menunjukkan kemampuan model memahami preferensi historis pengguna. Produk yang diberi rating tinggi sebelumnya, seperti Shoes dari Gucci (Rating 4.94), menegaskan kecenderungan user terhadap merek premium. Mayoritas produk yang diberi rating berasal dari kategori Women's Fashion dan Kids' Fashion, dengan dominasi merek Nike, menunjukkan pola belanja yang berfokus pada merek dan kategori tertentu. Hal ini tercermin dalam rekomendasi model, yang menyarankan produk dari kategori Kids' Fashion (contohnya, Jeans dari H&M dan T-shirt dari Gucci) serta merek populer lainnya seperti Adidas dan Zara, yang relevan dengan preferensi user.
+
+Prediksi rating untuk rekomendasi berkisar antara 3.80 hingga 4.90, mengindikasikan bahwa model berhasil mengidentifikasi produk yang berpotensi disukai pengguna berdasarkan embedding laten. Selain menyarankan produk serupa dengan preferensi sebelumnya, model juga mencoba mendiversifikasi rekomendasi dengan memasukkan produk dari kategori atau merek baru, seperti Women's Fashion dari Zara, untuk menawarkan lebih banyak variasi. Meskipun rekomendasi cukup relevan, potensi perbaikan meliputi pengayaan data dengan fitur tambahan seperti ulasan atau deskripsi produk serta penyesuaian sparsity untuk meningkatkan akurasi lebih lanjut.
 
 Kelebihan Neural Collaborative Filtering:
 - Kemampuan Menangkap Pola Kompleks: NCF dapat menangkap pola yang lebih kompleks dalam data dibandingkan dengan metode tradisional seperti matrix factorization, karena menggunakan neural networks yang dapat belajar dari interaksi non-linear antara fitur pengguna dan produk.
@@ -284,6 +305,87 @@ Kekurangan Neural Collaborative Filtering:
 - Overfitting: NCF memiliki potensi lebih tinggi untuk overfitting, terutama jika data training tidak cukup besar atau jika model terlalu rumit, karena jaringan neural bisa belajar noise dalam data.
 - Memerlukan Sumber Daya Komputasi yang Lebih Besar: Model NCF biasanya lebih mahal dalam hal komputasi, membutuhkan hardware yang lebih kuat (seperti GPU) untuk melatih model dalam waktu yang efisien, yang mungkin menjadi kendala di lingkungan dengan sumber daya terbatas.
 
-Berikut merupakan hasil pengujian model Neural Collaborative Filtering
-#### Produk yang diberi Rating oleh User
+## Evaluation
+Seperti yang telah dijelaskan sebelumnya, metrik evaluasi yang digunakan adalah Mean Square Error (MAE) dan Root Mean Square Error (RMSE). Kedua metrik tersebut dipilih karena keduanya memberikan ukuran yang jelas tentang sejauh mana prediksi rating atau preferensi produk yang diberikan oleh model menyimpang dari rating atau preferensi asli pengguna.
 
+- Mean Squared Error (MSE)
+    MSE menghitung rata-rata kuadrat dari selisih antara nilai prediksi dan nilai aktual.
+    Dengan mengkuadratkan selisih, MSE memberikan bobot yang lebih besar pada kesalahan yang besar. Ini berarti bahwa model akan lebih "dihukum" jika membuat prediksi yang jauh dari nilai sebenarnya.
+    
+    MSE sering digunakan ketika kita ingin memberikan penalti yang lebih besar pada kesalahan yang besar, karena kesalahan yang besar dapat memiliki konsekuensi yang lebih signifikan.
+    
+    ```math
+      \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+      ```
+      
+      Di mana:
+      ```math
+      \begin{aligned}
+      \text{MSE} & = \text{Mean Squared Error} \\
+      n & = \text{Jumlah data observasi} \\
+      y_i & = \text{Nilai aktual ke-} i \\
+      \hat{y}_i & = \text{Nilai prediksi ke-} i
+      \end{aligned}
+      ```
+
+- Root Mean Squared Error (RMSE)
+    RMSE (Root Mean Squared Error) adalah akar kuadrat dari MSE, yang memberikan ukuran rata-rata kesalahan prediksi dalam satuan yang sama dengan data asli.
+
+    RMSE mempertahankan sifat MSE yang memberikan penalti lebih besar pada kesalahan besar, namun dengan membuat hasilnya lebih mudah dipahami karena mengembalikan kesalahan ke skala yang lebih mudah diinterpretasikan. RMSE sering digunakan ketika kita ingin menilai akurasi model dengan mempertimbangkan besarnya kesalahan dalam konteks yang lebih terukur dan dapat dibandingkan langsung dengan data aslinya.
+
+    ```math
+    \text{RMSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} \left( r_{i} - \hat{r}_{i} \right)^2}
+    ```
+    
+    Di mana:
+    
+    ```math
+    \begin{aligned}
+        \text{RMSE} & = \text{Root Mean Squared Error, metrik untuk mengukur kesalahan prediksi model.} \\
+        r_{i} & = \text{Nilai aktual untuk item ke-i, misalnya rating asli yang diberikan oleh pengguna.} \\
+        \hat{r}_{i} & = \text{Prediksi untuk item ke-i yang dihasilkan oleh model.} \\
+        N & = \text{Jumlah total sampel (data) yang digunakan dalam evaluasi.}
+    \end{aligned}
+    ```
+
+### Perbandingan Performa Kedua Model
+#### Content Based Filtering dengan Cosine Similarity
+Pada metode Content Based Filtering, MSE dan RMSE digunakan untuk mengevaluasi seberapa baik sistem merekomendasikan produk berdasarkan kemiripan fitur. Dalam hal ini, kemiripan dihitung menggunakan Cosine Similarity antara produk yang diinputkan oleh pengguna dengan produk-produk yang direkomendasikan. MSE dan RMSE mengukur perbedaan antara nilai prediksi (produk yang direkomendasikan) dan nilai aktual (produk yang benar-benar dipilih atau relevan), dengan semakin kecil nilai MSE atau RMSE menunjukkan bahwa rekomendasi produk lebih akurat dan relevan dengan preferensi pengguna.
+
+Dalam perhitungan Cosine Similarity, threshold yang digunakan adalah 0.5. Ini berarti bahwa hanya produk-produk dengan nilai similarity lebih besar dari atau sama dengan 0.5 yang akan dianggap relevan dan dimasukkan dalam daftar rekomendasi. Threshold ini dipilih untuk memastikan bahwa produk yang direkomendasikan memiliki tingkat kemiripan yang cukup signifikan dengan produk yang diinputkan pengguna, sehingga dapat meningkatkan relevansi rekomendasi. Produk dengan nilai similarity di bawah 0.5 dianggap kurang relevan dan tidak dimasukkan dalam hasil rekomendasi, untuk menjaga kualitas dan akurasi saran yang diberikan kepada pengguna.
+
+Karena jumlah produk dalam sistem adalah 1000 produk ID, maka perhitungan MSE dan RMSE dilakukan secara rata-rata pada seluruh produk yang ada. Artinya, MSE dan RMSE dihitung untuk setiap pasangan produk yang dihitung kemiripannya menggunakan Cosine Similarity, kemudian rata-rata dari hasil-hasil tersebut diambil untuk memberikan nilai evaluasi keseluruhan terhadap akurasi rekomendasi. Dengan demikian, perhitungan ini mencerminkan performa sistem dalam merekomendasikan produk yang relevan di seluruh dataset produk yang ada.
+```python
+avg_mse, avg_rmse = calculate_mse_rmse_for_all(product_data, cosine_sim)
+```
+
+Hasil evaluasinya adalah sebagai berikut:
+- Rata-rata MSE pada seluruh produk: 0.0711
+- Rata-rata RMSE pada seluruh produk: 0.2550
+
+Berdasarkan hasil evaluasi menggunakan MSE dan RMSE, sistem Content Based Filtering dengan menggunakan Cosine Similarity menunjukkan performa yang cukup baik dalam merekomendasikan produk yang relevan. Dengan rata-rata MSE sebesar 0.0711 dan RMSE sebesar 0.2550, sistem berhasil meminimalkan kesalahan prediksi, menunjukkan bahwa produk yang direkomendasikan memiliki tingkat relevansi yang cukup tinggi terhadap preferensi pengguna. Threshold similarity 0.5 yang diterapkan memastikan bahwa hanya produk dengan kemiripan yang signifikan yang dipertimbangkan, menjaga kualitas rekomendasi dan relevansi hasil yang diberikan.
+
+#### Collaborative Filtering dengan Neural Collaborative Filtering (NCF)
+Pada metode Collaborative Filtering dengan Neural Collaborative Filtering (NCF), MSE dan RMSE digunakan untuk mengevaluasi seberapa akurat sistem dalam memprediksi rating untuk produk yang belum pernah diberi rating oleh pengguna. Model ini mempelajari pola perilaku rating pengguna terhadap produk-produk yang telah dinilai sebelumnya dan menggunakan informasi tersebut untuk memprediksi rating produk yang belum dinilai. Dengan cara ini, NCF berusaha memberikan rekomendasi yang relevan, berdasarkan kesamaan preferensi antara pengguna dan produk yang belum diberi rating.
+
+Berikut adalah hasil evaluasinya:
+- MSE: 1.7791
+- RMSE: 1.3338
+
+MSE sebesar 1.7791 dan RMSE sebesar 1.3338 menunjukkan bahwa model memiliki akurasi yang cukup baik dalam memprediksi rating untuk produk yang belum dinilai oleh pengguna. Meskipun nilai MSE dan RMSE menunjukkan adanya ruang untuk perbaikan, model ini berhasil memanfaatkan pola perilaku rating pengguna sebelumnya untuk memberikan rekomendasi produk yang relevan. Ke depannya, improvisasi dapat dilakukan dengan memperbaiki arsitektur model, menambahkan fitur baru, atau menggunakan teknik regularisasi untuk mengurangi overfitting dan meningkatkan akurasi prediksi.
+
+## Kesimpulan
+Dalam proyek ini, dua pendekatan utama digunakan untuk membangun sistem rekomendasi produk: Content-Based Filtering dan Collaborative Filtering menggunakan Neural Collaborative Filtering (NCF). Kedua metode ini bertujuan untuk memberikan rekomendasi produk yang relevan berdasarkan preferensi pengguna, baik dengan menganalisis kemiripan fitur produk maupun dengan memanfaatkan pola perilaku rating pengguna. Evaluasi menunjukkan bahwa Content-Based Filtering dengan menggunakan Cosine Similarity berhasil memberikan rekomendasi yang sesuai dengan produk yang memiliki fitur serupa, dengan MSE dan RMSE yang menunjukkan performa yang cukup baik dalam mengukur relevansi produk berdasarkan kemiripan fitur. Sementara itu, NCF berfokus pada prediksi rating produk yang belum pernah dinilai pengguna, dengan hasil evaluasi yang memperlihatkan ruang untuk perbaikan dalam memprediksi rating akurat.
+
+Secara keseluruhan, kedua metode menunjukkan potensi yang baik untuk meningkatkan pengalaman pengguna dalam menemukan produk yang sesuai dengan preferensi mereka. Content-Based Filtering berhasil mengidentifikasi produk serupa berdasarkan atribut yang jelas seperti kategori dan brand, sedangkan NCF memberikan rekomendasi berdasarkan preferensi yang lebih tersirat melalui interaksi pengguna sebelumnya. Meskipun keduanya memiliki hasil yang memadai, terdapat potensi untuk meningkatkan akurasi lebih lanjut melalui tuning model dan eksplorasi fitur tambahan, seperti penggabungan konteks waktu atau analisis tren pengguna.
+
+Sebagai langkah selanjutnya, pengembangan sistem dapat berfokus pada pemanfaatan kedua pendekatan secara hybrid, dengan menggabungkan kekuatan Content-Based Filtering dan Collaborative Filtering untuk menghasilkan rekomendasi yang lebih akurat dan personal. Penerapan teknik deep learning yang lebih kompleks dan eksplorasi metode regularisasi serta fine-tuning hyperparameter akan sangat berguna untuk memperbaiki akurasi prediksi, khususnya dalam NCF, dan memberikan solusi rekomendasi yang lebih optimal di masa depan.
+
+## Referensi
+1. Ahmed MZ, Singh A, Paul A. Amazon Product Recommendation System. IJARCCE. 2022 Mar 30;11(3).
+2. Dr. S. Sheeja RP. ERS: Latent Dirichlet Allocation Based E-Commerce Recommendation System Using Deep Neural Network. Psychology and Education Journal. 2021 Feb 1;58(2):953–9.
+3. Rafey Ahmed Farooqi, Surabhi Kesarwani, Mohd Shakeeb, Nitin Sharma, Ishita Bhatnagar. Enhancing E-Commerce Applications with Machine Learning Recommendation Systems. International Journal of Scientific Research in Science, Engineering and Technology. 2022 May 1;85–90.
+‌
+‌
+‌
+‌
